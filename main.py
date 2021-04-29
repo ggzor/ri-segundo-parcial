@@ -156,6 +156,26 @@ with open(originales, encoding="utf-8") as archivo:
         ["putin", "rusia"],
     ]
 
+    # Peso TF de las consultas
+    consultas_tf = {p: [pesoTF(c.count(p)) for c in consultas] for p in vocabulario}
+    Path("tf_consultas.csv").write_text(
+        "\n".join(
+            f"{p},{','.join(str(x) for x in consultas_tf[p])}"
+            for p in sorted(consultas_tf.keys())
+        ),
+        encoding="utf-8",
+    )
+
+    # Representar las consultas con el TF/IDF generado
+    wi_consultas = {p: [x * idf[p] for x in l] for p, l in consultas_tf.items()}
+    Path("representacion_consultas.csv").write_text(
+        "\n".join(
+            f"{i + 1},{','.join(str(wi_consultas[p][i]) for p in sorted(wi_consultas.keys()))}"
+            for i in range(len(consultas))
+        ),
+        encoding="utf-8",
+    )
+
     # Realizar las consultas
     for c in consultas:
         print("Consulta: ", ",".join(c))
