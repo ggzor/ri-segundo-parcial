@@ -20,8 +20,11 @@ Recuperación de la Información.
 - `NoticiasProcesadas.txt`: Contiene los documentos procesados.
 - `vocabulario.txt`: El vocabulario obtenido de los documentos.
 - `tf.csv`: La tabla TF como archivo separado por comas.
+- `tf_consultas.csv`: La tabla TF para las consultas como archivo separado por comas.
 - `idf.csv`: La tabla IDF como archivo separado por comas.
 - `representacion_documentos.csv`: La representación de los documentos como
+    vectores con TF/IDF.
+- `representacion_consultas.csv`: La representación de las consultas como
     vectores con TF/IDF.
 
 ## Ejecución
